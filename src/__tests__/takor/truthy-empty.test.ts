@@ -1,8 +1,6 @@
-import takor from '../..'
     
 describe('takor.truthy', () => {
-    it('runs without throwing', () => {
-        // const asserter = takor.truthy(takor.any)
-        // expect(() => asserter(10)).not.toThrow()
+    it('is empty because it is asserted in typematchers', () => {
+        expect(true).toEqual(true)
     })
 })
