@@ -106,14 +106,14 @@ describe('not.mapOf', () => {
     })
     it('asserts not an empty map', () => {
         const enforcer = Enforce.not.mapOf(
-            [Enforce.ANY, Enforce.ANY],
+            [Enforce.any, Enforce.any],
         )
         expect(enforcer(new Map)).toEqual(true)
     })
     describe('non-map values', () => {
         INVALID_VALUE_TYPES.mapOf.forEach(([type, value]) => {
             it(`is true for type ${type} of value ${value}`, () => {
-                const enforcer = Enforce.not.mapOf([Enforce.ANY, Enforce.ANY])
+                const enforcer = Enforce.not.mapOf([Enforce.any, Enforce.any])
                 expect(enforcer(value)).toEqual(true)
             })
         })
@@ -121,7 +121,7 @@ describe('not.mapOf', () => {
     describe('robustness', () => {
         describe('assertion', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
-                const enforcer = Enforce.not.mapOf([Enforce.ANY, Enforce.ANY])
+                const enforcer = Enforce.not.mapOf([Enforce.any, Enforce.any])
                 it(`does not throw for value type ${value}`, () => {
                     expect(() => { enforcer(value) }).not.toThrow()
                 })

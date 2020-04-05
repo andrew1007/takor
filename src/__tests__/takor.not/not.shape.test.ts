@@ -45,7 +45,8 @@ describe('not.shape', () => {
     describe('non-pojo vales', () => {
         INVALID_VALUE_TYPES.shape.forEach(([type, value]) => {
             it(`is true for type ${type} of value ${value}`, () => {
-                const enforcer = Enforce.not.shape(Enforce.ANY)
+                // @ts-ignore
+                const enforcer = Enforce.not.shape(Enforce.any)
                 expect(enforcer(value)).toEqual(true)
             })
         })
@@ -54,7 +55,8 @@ describe('not.shape', () => {
     describe('robustness', () => {
         describe('assertion', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
-                const enforcer = Enforce.not.shape(Enforce.ANY)
+                // @ts-ignore
+                const enforcer = Enforce.not.shape(Enforce.any)
                 it(`does not throw for value type ${value}`, () => {
                     expect(() => { enforcer(value) }).not.toThrow()
                 })

@@ -33,7 +33,7 @@ describe('not.setOf', () => {
     describe('non-set values', () => {
         INVALID_VALUE_TYPES.setOf.forEach(([type, value]) => {
             it(`is true for type ${type} of value ${value}`, () => {
-                const enforcer = Enforce.not.setOf(Enforce.ANY)
+                const enforcer = Enforce.not.setOf(Enforce.any)
                 expect(enforcer(value)).toEqual(true)
             })
         })

@@ -1,5 +1,5 @@
 import takor from '../..'
-import { INVALID_VALUE_TYPES, EVERY_POSSIBLE_VALUE } from '../testResources'
+import { EVERY_POSSIBLE_VALUE } from '../testResources'
 
 describe('allOf', () => {
     it('is true for one validator and full match', () => {

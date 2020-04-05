@@ -33,7 +33,7 @@ describe('setOf', () => {
     describe('non-set values', () => {
         INVALID_VALUE_TYPES.setOf.forEach(([type, value]) => {
             it(`is false for type ${type} of value ${value}`, () => {
-                const enforcer = Enforce.setOf(Enforce.ANY)
+                const enforcer = Enforce.setOf(Enforce.any)
                 expect(enforcer(value)).toEqual(false)
             })
         })
@@ -41,7 +41,7 @@ describe('setOf', () => {
     describe('robustness', () => {
         describe('assertion', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
-                const enforcer = Enforce.setOf(Enforce.ANY)
+                const enforcer = Enforce.setOf(Enforce.any)
                 it(`does not throw for value type ${value}`, () => {
                     expect(() => { enforcer(value) }).not.toThrow()
                 })

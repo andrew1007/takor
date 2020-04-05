@@ -38,7 +38,7 @@ describe('oneOf', () => {
     describe('robustness', () => {
         describe('assertion', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
-                const enforcer = Enforce.oneOf(Enforce.ANY)
+                const enforcer = Enforce.oneOf(Enforce.any)
                 it(`does not throw for value type ${value}`, () => {
                     expect(() => { enforcer(value) }).not.toThrow()
                 })
@@ -47,6 +47,7 @@ describe('oneOf', () => {
         describe('function creation', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
                 it(`does not throw when initailized with: ${value}`, () => {
+                    // @ts-ignore
                     expect(() => { Enforce.oneOf(value) }).not.toThrow()
                 })
             })
