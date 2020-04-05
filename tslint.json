@@ -1,0 +1,114 @@
+{
+  "extends": [
+    "tslint-config-prettier",
+    "tslint-eslint-rules"
+  ],
+  "jsRules": {
+    "no-empty": true
+  },
+  "rules": {
+    "ban": false,
+    "class-name": false,
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "curly": true,
+    "eofline": true,
+    "forin": true,
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "no-inferrable-types": false,
+    "no-debugger": {
+      "severity": "warning"
+    },
+    "no-irregular-whitespace": true,
+    "whitespace": {
+      "severity": "warn",
+      "options": [
+        "check-branch",
+        "check-decl",
+        "check-operator",
+        "check-module",
+        "check-separator",
+        "check-rest-spread",
+        "check-type",
+        "check-typecast",
+        "check-type-operator",
+        "check-preblock"
+      ]
+    },
+    "unnecessary-bind": true,
+    "no-consecutive-blank-lines": true,
+    "arrow-return-shorthand": true,
+    "array-type": [
+      true,
+      "array"
+    ],
+    "object-curly-spacing": [
+      true,
+      "always"
+    ],
+    "jsdoc-format": true,
+    "jsx-no-lambda": false,
+    "jsx-no-multiline-js": false,
+    "label-position": true,
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-construct": false,
+    "no-duplicate-variable": true,
+    "no-duplicate-switch-case": true,
+    "no-empty": true,
+    "no-duplicate-imports": true,
+    "no-eval": true,
+    "no-misused-new": true,
+    "no-string-literal": true,
+    "no-switch-case-fall-through": true,
+    "no-trailing-whitespace": false,
+    "no-unused-expression": true,
+    "radix": true,
+    "switch-default": true,
+    "no-string-throw": true,
+    "trailing-comma": [
+      false
+    ],
+    "indent": [
+      true,
+      "spaces",
+      4
+    ],
+    "deprecation": true,
+    "use-isnan": true,
+    "unnecessary-constructor": true,
+    "no-unsafe-finally": true,
+    "no-unbound-method": false,
+    "no-console": false,
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-pascal-case"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ],
+    "await-promise": true,
+    "no-async-without-await": true,
+    "no-conditional-assignment": true,
+    "no-return-await": true,
+    "static-this": true
+  }
+}

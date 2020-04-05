@@ -1,0 +1,101 @@
+{
+  "name": "type-enforce",
+  "version": "0.0.1",
+  "description": "Comprehensive and flexible runtime type assertion",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "build:watch": "tsc --watch",
+    "start": "npm run build && node dist/index.js",
+    "dev": "npm run build && nodemon dist/index.js",
+    "lint": "eslint src/*.ts",
+    "lint:fix": "eslint src/*.ts --fix",
+    "test": "node config/jest/test.js --modulePaths=src CI=true",
+    "ship": "npm run build && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KumarAbhirup/koji-leaderboard-api.git"
+  },
+  "keywords": [
+    "type-enforce",
+    "type-check",
+    "npm",
+    "package",
+    "type",
+    "validation"
+  ],
+  "author": "Andrew Yueh <yueh.andrew@gmail.com> (http://andrewyueh.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://https://github.com/andrew1007/enforce.js/issues"
+  },
+  "homepage": "https://https://github.com/andrew1007/enforce.js",
+  "devDependencies": {
+    "@types/jest": "^25.1.3",
+    "@types/node": "^12.7.3",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-wesbos": "0.0.19",
+    "eslint-plugin-html": "^5.0.5",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "jest": "^25.1.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2",
+    "ts-jest": "^25.2.1",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.6.2",
+    "typings": "^2.1.1"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!**/*.d.ts"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)",
+      "<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)"
+    ],
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.tsx?$": "<rootDir>/config/jest/typescriptTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web"
+    },
+    "moduleFileExtensions": [
+      "web.ts",
+      "ts",
+      "web.tsx",
+      "tsx",
+      "web.js",
+      "js",
+      "web.jsx",
+      "jsx",
+      "json",
+      "node",
+      "mjs"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "./tsconfig.json",
+        "isolatedModules": true
+      }
+    }
+  }
+}
