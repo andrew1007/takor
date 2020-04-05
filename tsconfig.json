@@ -23,6 +23,7 @@
     "esModuleInterop": true,
     "downlevelIteration": true,
     "declarationMap": false,
+    "declaration": true
   },
   "exclude": [
     "node_modules",

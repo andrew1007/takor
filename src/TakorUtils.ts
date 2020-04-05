@@ -2,14 +2,14 @@ import typeMatchers from './typeMatchers'
 import { POJO, ANY, TRUTHY, FALSEY } from './constants'
 import { IValidEnforcerArgs, IValidator } from './types'
 
-export default class Utils {
+export default class TakorUtils {
     protected static POJO = typeMatchers.get(POJO) as IValidator
     protected static ANY = typeMatchers.get(ANY) as IValidator
     protected static TRUTHY = typeMatchers.get(TRUTHY) as IValidator
     protected static FALSEY = typeMatchers.get(FALSEY) as IValidator
 
     protected static getValidator(el: any): IValidator {
-        if (el === Utils.ANY) {
+        if (el === TakorUtils.ANY) {
             return () => true
         } if (typeMatchers.has(el)) {
             return typeMatchers.get(el) as IValidator
@@ -23,11 +23,11 @@ export default class Utils {
     }
 
     protected static createArrayValidators = (enforcedTypes: any[]): IValidator[] => {
-        return enforcedTypes.map(el => Utils.getValidator(el))
+        return enforcedTypes.map(el => TakorUtils.getValidator(el))
     }
 
     protected static createMapValidators = (enforcedTypes: [IValidEnforcerArgs, IValidEnforcerArgs][]): [IValidator, IValidator][] => {
-        return enforcedTypes.map(([key, value]) => [Utils.getValidator(key), Utils.getValidator(value)])
+        return enforcedTypes.map(([key, value]) => [TakorUtils.getValidator(key), TakorUtils.getValidator(value)])
     }
 
     protected static assertOfArray(allValidators: IValidator[]) {
@@ -50,7 +50,7 @@ export default class Utils {
                     if (shape.hasOwnProperty(key)) {
                         const currWalkedValue = arg[key]
                         const value = shape[key]
-                        const validator = Utils.getValidator(value)
+                        const validator = TakorUtils.getValidator(value)
                         if (validator(currWalkedValue)) {
                             return false
                         }
@@ -66,7 +66,7 @@ export default class Utils {
                 if (shape.hasOwnProperty(key)) {
                     const currWalkedValue = arg[key]
                     const value = shape[key]
-                    const validator = Utils.getValidator(value)
+                    const validator = TakorUtils.getValidator(value)
                     if (!validator(currWalkedValue)) {
                         return false
                     }

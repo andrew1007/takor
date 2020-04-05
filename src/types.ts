@@ -1,7 +1,10 @@
 
 export type IValidator = (el?: any) => boolean
 
-export type ShapeArg = { [key: string]: (IValidEnforcerArgs | ({ [key: string]: any })) } | IValidEnforcerArgs
+export type ShapeArg = {
+    [key: string]: IValidEnforcerArgs
+}
+
 export type IValidEnforcerArgs =
     SetConstructor |
     MapConstructor |

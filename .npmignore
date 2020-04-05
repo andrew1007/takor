@@ -1,1 +1,5 @@
 src
+config
+ts*
+*.md
+.eslintrc

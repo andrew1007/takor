@@ -2,12 +2,6 @@ import Enforce from '../..'
 import { INVALID_VALUE_TYPES, EVERY_POSSIBLE_VALUE } from '../testResources'
 
 describe('shape', () => {
-    it('succeeds match for any object using Enforce.ANY', () => {
-        const enforcer = Enforce.shape(Enforce.ANY)
-        const actual = enforcer({})
-        expect(actual).toEqual(true)
-    })
-
     describe('basic shapes', () => {
         it('enforces basic shape', () => {
             const enforcer = Enforce.shape({
@@ -190,7 +184,7 @@ describe('shape', () => {
     describe('non-pojo values', () => {
         INVALID_VALUE_TYPES.shape.forEach(([type, value]) => {
             it(`is false for type ${type} of value ${value}`, () => {
-                const enforcer = Enforce.shape(Enforce.ANY)
+                const enforcer = Enforce.shape({})
                 expect(enforcer(value)).toEqual(false)
             })
         })
@@ -199,7 +193,7 @@ describe('shape', () => {
     describe('robustness', () => {
         describe('assertion', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
-                const enforcer = Enforce.shape(Enforce.ANY)
+                const enforcer = Enforce.shape({})
                 it(`does not throw for value type ${value}`, () => {
                     expect(() => {enforcer(value)}).not.toThrow()
                 })
