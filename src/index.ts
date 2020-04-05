@@ -3,7 +3,7 @@ import TakorUtils from './TakorUtils'
 import { ShapeArg, IValidEnforcerArgs } from './types'
 
 export default class takor extends TakorUtils {
-    static pojo = TakorUtils.POJO
+    static pojo = TakorUtils.pojo
     static any = TakorUtils.ANY
     static truthy = TakorUtils.TRUTHY
     static falsey = TakorUtils.FALSEY
@@ -29,13 +29,13 @@ export default class takor extends TakorUtils {
         }
 
         function makeAutomaticallyGoodArg(shape) {
-            const isPojo = takor.is(TakorUtils.POJO)
+            const isPojo = takor.is(TakorUtils.pojo)
             const isAny = () => shape === TakorUtils.ANY
             return takor.allOf(isPojo, isAny)
         }
         function makeNotArgToAssert() {
             const shapeEmptyButArgPopulated = (arg: any) => shapeSize === 0 && Object.values(arg).length > 0
-            const isPojo = takor.is(TakorUtils.POJO)
+            const isPojo = takor.is(TakorUtils.pojo)
             const notPojo = takor.not.is(isPojo)
             return takor.oneOf(notPojo, shapeEmptyButArgPopulated)
         }
@@ -149,7 +149,7 @@ export default class takor extends TakorUtils {
                 return () => true
             }
 
-            const notPojo = takor.not.is(TakorUtils.POJO)
+            const notPojo = takor.not.is(TakorUtils.pojo)
             const notArgToAssert = makeNotArgToAssert()
             return (arg: any) => {
                 try {
@@ -167,9 +167,7 @@ export default class takor extends TakorUtils {
 
             function makeNotArgToAssert() {
                 const shapeAndArgEmpty = arg => shapeSize === 0 && Object.values(arg).length === 0
-                const isPojo = takor.is(TakorUtils.POJO)
-                const isAnyAssertionAndObj = (arg) => shape === TakorUtils.ANY && isPojo(arg)
-                return takor.oneOf(isAnyAssertionAndObj, shapeAndArgEmpty)
+                return takor.oneOf(shapeAndArgEmpty)
             }
         },
     }

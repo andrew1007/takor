@@ -3,7 +3,7 @@ import { POJO, ANY, TRUTHY, FALSEY } from './constants'
 import { IValidEnforcerArgs, IValidator } from './types'
 
 export default class TakorUtils {
-    protected static POJO = typeMatchers.get(POJO) as IValidator
+    protected static pojo = typeMatchers.get(POJO) as IValidator
     protected static ANY = typeMatchers.get(ANY) as IValidator
     protected static TRUTHY = typeMatchers.get(TRUTHY) as IValidator
     protected static FALSEY = typeMatchers.get(FALSEY) as IValidator

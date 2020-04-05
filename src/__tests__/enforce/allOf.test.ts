@@ -13,12 +13,12 @@ describe('allOf', () => {
     })
     it('uses nested validators correctly (true case)', () => {
         const isEmptyObj = Enforce.shape({})
-        const enforcer = Enforce.allOf(isEmptyObj, Enforce.POJO)
+        const enforcer = Enforce.allOf(isEmptyObj, Enforce.pojo)
         expect(enforcer({})).toEqual(true)
     })
     it('uses nested validators correctly (false case)', () => {
         const isEmptyObj = Enforce.shape({})
-        const enforcer = Enforce.allOf(isEmptyObj, Enforce.POJO)
+        const enforcer = Enforce.allOf(isEmptyObj, Enforce.pojo)
         expect(enforcer({ a: 10 })).toEqual(false)
     })
     describe('edge cases', () => {
@@ -43,7 +43,7 @@ describe('allOf', () => {
     describe('robustness', () => {
         describe('assertion', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
-                const enforcer = Enforce.allOf(Enforce.ANY)
+                const enforcer = Enforce.allOf(Enforce.any)
                 it(`does not throw for value type ${value}`, () => {
                     expect(() => enforcer(value)).not.toThrow()
                 })

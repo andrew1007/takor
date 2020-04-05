@@ -21,7 +21,7 @@ describe('not.arrayOf', () => {
             expect(actual).toEqual(true)
         })
         it('fails', () => {
-            const enforcer = Enforce.not.arrayOf(Array, Enforce.shape({ key: Enforce.POJO }), Set)
+            const enforcer = Enforce.not.arrayOf(Array, Enforce.shape({ key: Enforce.pojo }), Set)
             const actual = enforcer(['', { key: {} }])
             expect(actual).toEqual(false)
         })
@@ -29,7 +29,7 @@ describe('not.arrayOf', () => {
     describe('non-array values', () => {
         INVALID_VALUE_TYPES.arrayOf.forEach(([type, value]) => {
             it(`is true for type ${type} of value ${value}`, () => {
-                const enforcer = Enforce.not.arrayOf(Enforce.ANY)
+                const enforcer = Enforce.not.arrayOf(Enforce.any)
                 expect(enforcer(value)).toEqual(true)
             })
         })

@@ -54,7 +54,7 @@ describe('shape', () => {
         })
         it('enforces nested shapes', () => {
             const enforcer = Enforce.shape({
-                key: Enforce.POJO
+                key: Enforce.pojo
             })
             const actual = enforcer({
                 key: {

@@ -53,7 +53,7 @@ describe('is', () => {
             { value: { a: 10 }, good: true },
         ]
         VALUES.forEach(({ value, good }) => {
-            const isPojo = Enforce.is(Enforce.POJO)
+            const isPojo = Enforce.is(Enforce.pojo)
             it(`is for ${value} of value ${good}`, () => {
                 expect(isPojo(value)).toEqual(good)
             })
@@ -62,7 +62,7 @@ describe('is', () => {
     describe('robustness', () => {
         describe('assertion', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
-                const enforcer = Enforce.is(Enforce.ANY)
+                const enforcer = Enforce.is(Enforce.any)
                 it(`does not throw for value type ${value}`, () => {
                     expect(() => enforcer(value)).not.toThrow()
                 })

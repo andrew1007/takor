@@ -10,18 +10,10 @@ describe('not.shape', () => {
         })
         it('fails', () => {
             const enforcer = Enforce.not.shape({
-                key: Enforce.POJO
+                key: Enforce.pojo
             })
             const actual = enforcer({ key: { a: 10 } })
             expect(actual).toEqual(false)
-        })
-        it('uses any properly', () => {
-            const enforcer = Enforce.not.shape(Enforce.ANY)
-            expect(enforcer({})).toEqual(false)
-        })
-        it('uses any properly', () => {
-            const enforcer = Enforce.not.shape(Enforce.ANY)
-            expect(enforcer({ a: 10 })).toEqual(false)
         })
     })
     describe('complex', () => {
