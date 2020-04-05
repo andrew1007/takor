@@ -26,5 +26,4 @@ type IValidEnforcerArgs =
     string |
     number |
     IValidator
-
 ```

@@ -1,10 +1,13 @@
+// Custom validators are any function that accepts an input value and returns a boolean
 export type IValidator = (el?: any) => boolean
 
+// Shape accepts an object where the value is a validator or a primitive literal
 export type ShapeArg = {
-    [key: string]: IValidEnforcerArgs
+    [key: string]: IValidTakorArgs
 }
 
-export type IValidEnforcerArgs =
+// List of valid arguments
+export type IValidTakorArgs =
     SetConstructor |
     MapConstructor |
     NumberConstructor |
@@ -17,4 +20,4 @@ export type IValidEnforcerArgs =
     false |
     string |
     number |
-    IValidator
+    IValidator // custom validator

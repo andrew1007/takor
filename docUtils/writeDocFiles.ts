@@ -2,11 +2,23 @@
 import takor from '../src/index'
 import fs from 'fs'
 // @ts-ignore
-import docTemplateWriter from './docTemplateWriter'
+
+const docTemplateWriter = (staticName: string) => {
+    return `#### ${staticName}
+
+##### Desc
+
+##### Notes
+
+##### Examples
+\`\`\`javascript
+
+\`\`\``
+}
 
 (function () {
     const takorDir = '../docs/takor'
-    const takorNotDir = `../docs/takor.not`
+    const takorNotDir = `../docs/takor`
 
     let fileCreationCount = 0
 
@@ -24,9 +36,9 @@ import docTemplateWriter from './docTemplateWriter'
     const allNotStatics = Object.keys(takor.not)
     const allNotTakorMdFiles = fs.readdirSync(takorNotDir)
     for (let staticMethod of allNotStatics) {
-        if (!allNotTakorMdFiles.includes(`${staticMethod}.md`) && !allNotTakorMdFiles.includes(`${staticMethod}-empty.md`)) {
+        if (!allNotTakorMdFiles.includes(`not-${staticMethod}.md`) && !allNotTakorMdFiles.includes(`not-${staticMethod}-empty.md`)) {
             console.log(`${staticMethod}.not.md does not exist! writing...`)
-            fs.writeFileSync(`${takorNotDir}/${staticMethod}-empty.md`, docTemplateWriter(`not.${staticMethod}`))
+            fs.writeFileSync(`${takorNotDir}/not-${staticMethod}-empty.md`, docTemplateWriter(`not.${staticMethod}`))
             fileCreationCount += 1
         }
     }
