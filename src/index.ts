@@ -1,6 +1,6 @@
 import { getPojoSize } from './utils'
 import TakorUtils from './TakorUtils'
-import { ShapeArg, IValidEnforcerArgs } from './types'
+import { ShapeArg, IValidTakorArgs } from './types'
 
 export default class takor extends TakorUtils {
     static pojo = TakorUtils.pojo
@@ -41,12 +41,12 @@ export default class takor extends TakorUtils {
         }
     }
 
-    static arrayOf(...enforcedTypes: IValidEnforcerArgs[]) {
+    static arrayOf(...enforcedTypes: IValidTakorArgs[]) {
         const allValidators = TakorUtils.createArrayValidators(enforcedTypes)
         return TakorUtils.assertOfArray(allValidators)
     }
 
-    static setOf(...enforcedTypes: IValidEnforcerArgs[]) {
+    static setOf(...enforcedTypes: IValidTakorArgs[]) {
         const allValidators = (enforcedTypes).map(el => TakorUtils.getValidator(el))
         return (set: any) => {
             if (takor.not.is(Set)(set)) {
@@ -56,7 +56,7 @@ export default class takor extends TakorUtils {
         }
     }
 
-    static mapOf(...enforcedTypes: [IValidEnforcerArgs, IValidEnforcerArgs][]) {
+    static mapOf(...enforcedTypes: [IValidTakorArgs, IValidTakorArgs][]) {
         let allValidators
         try {
             allValidators = TakorUtils.createMapValidators(enforcedTypes)
@@ -76,23 +76,23 @@ export default class takor extends TakorUtils {
         }
     }
 
-    static is(enforcedType: IValidEnforcerArgs) {
+    static is(enforcedType: IValidTakorArgs) {
         const validator = TakorUtils.getValidator(enforcedType)
         return (el: any) => validator(el)
     }
 
-    static oneOf(...enforcedTypes: IValidEnforcerArgs[]) {
+    static oneOf(...enforcedTypes: IValidTakorArgs[]) {
         const allValidators = TakorUtils.createArrayValidators(enforcedTypes)
         return TakorUtils.ensure.some(allValidators)
     }
 
-    static allOf(...enforcedTypes: IValidEnforcerArgs[]) {
+    static allOf(...enforcedTypes: IValidTakorArgs[]) {
         const allValidators = TakorUtils.createArrayValidators(enforcedTypes)
         return TakorUtils.ensure.every(allValidators)
     }
 
     static not = {
-        setOf(...enforcedTypes: IValidEnforcerArgs[]) {
+        setOf(...enforcedTypes: IValidTakorArgs[]) {
             const allValidators = TakorUtils.createArrayValidators(enforcedTypes)
             return (set: any) => {
                 if (takor.not.is(Set)(set)) {
@@ -103,7 +103,7 @@ export default class takor extends TakorUtils {
                 })
             }
         },
-        mapOf(...enforcedTypes: [IValidEnforcerArgs, IValidEnforcerArgs][]) {
+        mapOf(...enforcedTypes: [IValidTakorArgs, IValidTakorArgs][]) {
             let allValidators
             try {
                 allValidators = TakorUtils.createMapValidators(enforcedTypes)
@@ -121,15 +121,15 @@ export default class takor extends TakorUtils {
                 })
             }
         },
-        is: (enforcedType: IValidEnforcerArgs) => {
+        is: (enforcedType: IValidTakorArgs) => {
             const validator = TakorUtils.getValidator(enforcedType)
             return (element: any) => !validator(element)
         },
-        oneOf: (...enforcedTypes: IValidEnforcerArgs[]) => {
+        oneOf: (...enforcedTypes: IValidTakorArgs[]) => {
             const allValidators = TakorUtils.createArrayValidators(enforcedTypes)
             return TakorUtils.ensure.not.every(allValidators)
         },
-        arrayOf: (...enforcedTypes: IValidEnforcerArgs[]) => {
+        arrayOf: (...enforcedTypes: IValidTakorArgs[]) => {
             const allValidators = TakorUtils.createArrayValidators(enforcedTypes)
 
             return (array: any) => {
