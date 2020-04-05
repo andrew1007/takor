@@ -3,3 +3,4 @@ config
 ts*
 *.md
 .eslintrc
+scripts

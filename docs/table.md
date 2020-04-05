@@ -1,10 +1,18 @@
-export type IValidator = (el?: any) => boolean
+## static methods
 
-export type ShapeArg = {
+| name | types |
+| -- | --|
+| shape | [el](#types)
+
+##types
+```typescript
+type IValidator = (el?: any) => boolean
+
+interface ShapeArg {
     [key: string]: IValidEnforcerArgs
 }
 
-export type IValidEnforcerArgs =
+type IValidEnforcerArgs =
     SetConstructor |
     MapConstructor |
     NumberConstructor |
@@ -18,3 +26,5 @@ export type IValidEnforcerArgs =
     string |
     number |
     IValidator
+
+```

@@ -1,4 +1,9 @@
-import { POJO, ANY, TRUTHY, FALSEY } from './constants'
+import {
+    POJO as pojo,
+    ANY as any,
+    TRUTHY as truthy,
+    FALSEY as falsey,
+} from './constants'
 
 const { prototype, getPrototypeOf } = Object
 
@@ -18,11 +23,11 @@ export default new Map<any, (arg: any) => boolean>([
     [undefined, (el: any) => el === undefined],
     [NaN, (el: any) => Number.isNaN(el)],
     [Array, (el: any) => el instanceof Array || Array.isArray(el)],
-    [POJO, (el: any) => isPojo(el)],
-    [ANY, (_: any) => true],
+    [pojo, (el: any) => isPojo(el)],
+    [any, (_: any) => true],
     [Boolean, (el: any) => typeof el === 'boolean'],
     [true, (el: any) => el === true],
     [false, (el: any) => el === false],
-    [TRUTHY, (el: any) => !!el],
-    [FALSEY, (el: any) => !el],
+    [truthy, (el: any) => !!el],
+    [falsey, (el: any) => !el],
 ])

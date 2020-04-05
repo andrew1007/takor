@@ -1,3 +1,6 @@
+## types
+
+```typescript
 export type IValidator = (el?: any) => boolean
 
 export type ShapeArg = {
@@ -18,3 +21,4 @@ export type IValidEnforcerArgs =
     string |
     number |
     IValidator
+```

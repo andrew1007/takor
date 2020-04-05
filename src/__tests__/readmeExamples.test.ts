@@ -1,8 +1,8 @@
-import Enforce from '..'
+import takor from '..'
 
 describe('README examples', () => {
     describe('Enforce.oneOf', () => {
-        const isNumOrStr = Enforce.oneOf(Number, String)
+        const isNumOrStr = takor.oneOf(Number, String)
         it('matching value', () => {
             expect(isNumOrStr(10)).toEqual(true)
         })
@@ -12,8 +12,8 @@ describe('README examples', () => {
     })
 
     describe('Enforce.shape', () => {
-        const checkShape = Enforce.shape({
-            key1: Enforce.oneOf(Number, String)
+        const checkShape = takor.shape({
+            key1: takor.oneOf(Number, String)
         })
         describe('basic', () => {
             it('matches', () => {
@@ -23,9 +23,9 @@ describe('README examples', () => {
             })
         })
         describe('nested', () => {
-            const checkNestedElement = Enforce.shape({
-                key1: Enforce.shape({
-                    key2: Enforce.arrayOf(Number, Set, String)
+            const checkNestedElement = takor.shape({
+                key1: takor.shape({
+                    key2: takor.arrayOf(Number, Set, String)
                 })
             })
             it('matching value', () => {
@@ -46,7 +46,7 @@ describe('README examples', () => {
     })
 
     describe('literal number or string', () => {
-        const isValidDogBreed = Enforce.oneOf('terrier', 'greyhound', 'golden retriever')
+        const isValidDogBreed = takor.oneOf('terrier', 'greyhound', 'golden retriever')
         it('matches', () => {
             expect(isValidDogBreed('terrier')).toEqual(true)
         })
@@ -59,8 +59,8 @@ describe('README examples', () => {
         const lessThanTen = (el) => el < 10
         const greaterThanThree = (el) => el > 3
 
-        const goodNumberRange = Enforce.allOf(lessThanTen, greaterThanThree)
-        const allInValidRange = Enforce.arrayOf(goodNumberRange, String)
+        const goodNumberRange = takor.allOf(lessThanTen, greaterThanThree)
+        const allInValidRange = takor.arrayOf(goodNumberRange, String)
         it('matches', () => {
             expect(allInValidRange([8, 4, 3.5, 5])).toEqual(true)
         })
@@ -80,7 +80,7 @@ describe('README examples', () => {
 
     describe('not', () => {
         describe('oneOf', () => {
-            const nonNullOrArray = Enforce.not.oneOf(null, Array)
+            const nonNullOrArray = takor.not.oneOf(null, Array)
             it('matches', () => {
                 expect(nonNullOrArray(10)).toEqual(true)
             })
@@ -91,8 +91,8 @@ describe('README examples', () => {
     })
 
     describe('mapOf', () => {
-        const validMap = Enforce.mapOf(
-            [Number, Enforce.oneOf(Array, Set)],
+        const validMap = takor.mapOf(
+            [Number, takor.oneOf(Array, Set)],
             [String, String]
         )
         it('matches', () => {
@@ -109,6 +109,19 @@ describe('README examples', () => {
                 ['10', new Set]
             ]))).toEqual(false)
 
+        })
+    })
+
+    describe('allOf', () => {
+        const isPopulated = (arr) => arr.length > 0
+        const populatedStringArr = takor.allOf(takor.arrayOf(String), isPopulated)
+        const impossibleCheck = takor.allOf(Number, String)
+        console.log(impossibleCheck(10)) // false
+        console.log(impossibleCheck('')) // false
+        it('it meets expected values', () => {
+            expect(populatedStringArr([''])).toEqual(true)
+            expect(populatedStringArr([])).toEqual(false)
+            expect(populatedStringArr([10])).toEqual(false)
         })
     })
 })
