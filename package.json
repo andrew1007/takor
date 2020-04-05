@@ -1,6 +1,6 @@
 {
-  "name": "type-enforce",
-  "version": "0.0.1",
+  "name": "takor",
+  "version": "0.9.0",
   "description": "Comprehensive and flexible runtime type assertion",
   "main": "dist/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KumarAbhirup/koji-leaderboard-api.git"
+    "url": "https://github.com/andrew1007/type-enforce"
   },
   "keywords": [
     "type-enforce",
@@ -28,9 +28,9 @@
   "author": "Andrew Yueh <yueh.andrew@gmail.com> (http://andrewyueh.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://https://github.com/andrew1007/enforce.js/issues"
+    "url": "https://github.com/andrew1007/type-enforce/issues"
   },
-  "homepage": "https://https://github.com/andrew1007/enforce.js",
+  "homepage": "https://github.com/andrew1007/type-enforce",
   "devDependencies": {
     "@types/jest": "^25.1.3",
     "@types/node": "^12.7.3",

@@ -1,4 +1,4 @@
-# Enforce.js
+# takor
 
 Flexible and composable runtime type assertion for Javascript. Syntax inspired by prop-types. Supports:
 - ES6 data structures
@@ -8,23 +8,23 @@ Flexible and composable runtime type assertion for Javascript. Syntax inspired b
 
 ## 📦 Quick Examples
 ```javascript
-// Enforce.oneOf
-const isNumOrStr = Enforce.oneOf(Number, String)
+// takor.oneOf
+const isNumOrStr = takor.oneOf(Number, String)
 isNumOrStr(10) // true
 isNumOrStr(new Set) // false
 
-// Enforce.shape basic
-const checkShape = Enforce.shape({
-    key1: Enforce.oneOf(Number, String)
+// takor.shape basic
+const checkShape = takor.shape({
+    key1: takor.oneOf(Number, String)
 })
 checkShape({ // true
     key1: 'string'
 })
 
-// Enforce.shape with nested assertions
-const checkNestedElement = Enforce.shape({
-    key1: Enforce.shape({
-        key2: Enforce.arrayOf(Number, Set, String)
+// takor.shape with nested assertions
+const checkNestedElement = takor.shape({
+    key1: takor.shape({
+        key2: takor.arrayOf(Number, Set, String)
     })
 })
 checkNestedElement({ // true
@@ -40,7 +40,7 @@ checkNestedElement({ // false
 })
 
 // supports literal number or string
-const isValidDogBreed = Enforce.oneOf('terrier', 'greyhound', 'golden retriever')
+const isValidDogBreed = takor.oneOf('terrier', 'greyhound', 'golden retriever')
 isValidDogBreed('terrier') // true
 isValidDogBreed('persian') // false
 
@@ -48,8 +48,8 @@ isValidDogBreed('persian') // false
 const lessThanTen = (el) => el < 10
 const greaterThanThree = (el) => el > 3
 
-const goodNumberRange = Enforce.allOf(lessThanTen, greaterThanThree)
-const allInValidRange = Enforce.arrayOf(goodNumberRange, String)
+const goodNumberRange = takor.allOf(lessThanTen, greaterThanThree)
+const allInValidRange = takor.arrayOf(goodNumberRange, String)
 
 allInValidRange([8, 4, 3.5, 5]) // true
 allInValidRange([8, 4, '100', 5]) // true
@@ -57,9 +57,9 @@ allInValidRange([8, 4, 100, 5]) // false
 allInValidRange(10) // false 
 allInValidRange(new Map) // false
 
-// Enforce.mapOf
-const validMap = Enforce.mapOf(
-    [Number, Enforce.oneOf(Array, Set)],
+// takor.mapOf
+const validMap = takor.mapOf(
+    [Number, takor.oneOf(Array, Set)],
     [String, String]
 )
 validMap(new Map([ // true
@@ -74,8 +74,8 @@ validMap(new Map([ // false
     ['10', new Set]
 ]))
 
-// Enforce.not
-const nonNullOrArray = Enforce.not.oneOf(null, Array)
+// takor.not
+const nonNullOrArray = takor.not.oneOf(null, Array)
 nonNullOrArray(10) // true
 nonNullOrArray([]) // false
 ```
