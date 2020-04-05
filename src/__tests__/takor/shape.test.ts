@@ -124,23 +124,21 @@ describe('shape', () => {
         // it's a feature not a bug omegalul
         it('does not enforce extra keys', () => {
             const enforcer = takor.shape({
-                key: takor.arrayOf(takor.shape({
-                    hello: takor.shape({
-                        hello2: Number,
-                        hello3: Number
+                data: takor.arrayOf(takor.shape({
+                    entry: takor.shape({
+                        phoneNumber: Number,
+                        firstName: String
                     })
                 }))
             })
             const actual = enforcer({
-                key: [
-                    {
-                        hello: {
-                            hello2: 10,
-                            hello3: 10,
-                            hello4: 20
-                        }
+                data: [{
+                    entry: {
+                        phoneNumber: 4024224856,
+                        firstName: 'john',
+                        lastName: 'smith'
                     }
-                ]
+                }]
             })
             expect(actual).toEqual(true)
         })
@@ -195,7 +193,7 @@ describe('shape', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
                 const enforcer = takor.shape({})
                 it(`does not throw for value type ${value}`, () => {
-                    expect(() => {enforcer(value)}).not.toThrow()
+                    expect(() => { enforcer(value) }).not.toThrow()
                 })
             })
         })
@@ -203,7 +201,7 @@ describe('shape', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
                 it(`does not throw when initailized with: ${value}`, () => {
                     // @ts-ignore
-                    expect(() => {takor.shape(value)}).not.toThrow()
+                    expect(() => { takor.shape(value) }).not.toThrow()
                 })
             })
         })
