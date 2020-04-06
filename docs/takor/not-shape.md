@@ -1,5 +1,7 @@
 #### not.shape
 
+type: [ShapeOfMatchers](#types)
+
 ##### Desc
 The converse [shape](#shape)
 ##### Notes

@@ -1,5 +1,7 @@
 #### truthy
 
+type: [ITruthy](#types)
+
 ##### Desc
 Not a validator. It is a function that checks if the value is `truthy`.
 ##### Notes

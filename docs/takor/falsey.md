@@ -1,5 +1,7 @@
 #### falsey
 
+type: [IFalsey](#types)
+
 ##### Desc
 Not a validator. It is a raw function that checks for any `falsey` value type
 

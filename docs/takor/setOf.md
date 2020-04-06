@@ -1,5 +1,7 @@
 #### setOf
 
+type: [ListOfMatchers](#types)
+
 ##### Desc
 Asserts inner elements of a `Set`
 

@@ -1,5 +1,7 @@
 #### any
 
+type: [IAny](#types)
+
 ##### Desc
 A function that is `true` for any value
 

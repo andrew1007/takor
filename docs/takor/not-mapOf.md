@@ -1,5 +1,7 @@
 #### not.mapOf
 
+type: [ListOfTupleMatchers](#types)
+
 ##### Desc
 The converse [mapOf](#mapof)
 ##### Notes

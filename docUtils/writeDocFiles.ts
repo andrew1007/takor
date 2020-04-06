@@ -7,6 +7,8 @@ const docTemplateWriter = (staticName: string) => {
 
 ##### Desc
 
+##### type
+
 ##### Notes
 
 ##### Examples

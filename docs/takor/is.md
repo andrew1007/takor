@@ -1,5 +1,7 @@
 #### is
 
+type: [SingleMatcher](#types)
+
 ##### Desc
 Performs an assertion on a single value
 

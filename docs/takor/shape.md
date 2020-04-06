@@ -1,5 +1,7 @@
 #### shape
 
+type: [ShapeOfMatchers](#types)
+
 ##### Desc
 Asserts a specific structure of a pojo (plain old javascript object)
 

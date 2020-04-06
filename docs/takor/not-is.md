@@ -1,5 +1,7 @@
 #### not.is
 
+type: [SingleMatcher](#types)
+
 ##### Desc
 The converse [is](#is)
 ##### Notes

@@ -1,5 +1,5 @@
-import { ShapeArg } from './types'
+import { ShapeOfMatchers } from './types'
 
-export function getPojoSize(obj: ShapeArg) {
+export function getPojoSize(obj: ShapeOfMatchers) {
     return Object.keys(obj as any).length
 }

@@ -1,5 +1,7 @@
 #### oneOf
 
+type: [ListOfMatchers](#types)
+
 ##### Desc
 At least one validator must match
 

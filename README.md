@@ -7,6 +7,7 @@ Flexible and composable runtime type assertion for Javascript. Syntax inspired b
 - inverse assertions
 - custom validators
 
+
 ## 📦 Quick Examples
 ```javascript
 // takor.oneOf

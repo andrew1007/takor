@@ -1,6 +1,6 @@
 import typeMatchers from './typeMatchers'
 import { POJO, ANY, TRUTHY, FALSEY } from './constants'
-import { IValidTakorArgs, ICustomValidator } from './types'
+import { IMatcher, ICustomValidator } from './types'
 
 export default class TakorUtils {
     protected static pojo = typeMatchers.get(POJO) as ICustomValidator
@@ -26,7 +26,7 @@ export default class TakorUtils {
         return enforcedTypes.map(el => TakorUtils.getValidator(el))
     }
 
-    protected static createMapValidators = (enforcedTypes: [IValidTakorArgs, IValidTakorArgs][]): [ICustomValidator, ICustomValidator][] => {
+    protected static createMapValidators = (enforcedTypes: [IMatcher, IMatcher][]): [ICustomValidator, ICustomValidator][] => {
         return enforcedTypes.map(([key, value]) => [TakorUtils.getValidator(key), TakorUtils.getValidator(value)])
     }
 

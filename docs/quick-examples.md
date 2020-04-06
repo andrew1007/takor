@@ -39,15 +39,15 @@ isValidDogBreed('persian') // false
 // custom validator(s)
 const lessThanTen = (el) => el < 10
 const greaterThanThree = (el) => el > 3
-
 const goodNumberRange = takor.allOf(lessThanTen, greaterThanThree)
-const allInValidRange = takor.arrayOf(goodNumberRange, String)
+// compose existing validator into another
+const validNumRangeOrStr = takor.arrayOf(goodNumberRange, String)
 
-allInValidRange([8, 4, 3.5, 5]) // true
-allInValidRange([8, 4, '100', 5]) // true
-allInValidRange([8, 4, 100, 5]) // false
-allInValidRange(10) // false 
-allInValidRange(new Map) // false
+validNumRangeOrStr([8, 4, 3.5, 5]) // true
+validNumRangeOrStr([8, 4, '100', 5]) // true
+validNumRangeOrStr([8, 4, 100, 5]) // false
+validNumRangeOrStr(10) // false 
+validNumRangeOrStr(new Map) // false
 
 // takor.mapOf
 const validMap = takor.mapOf(

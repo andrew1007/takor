@@ -1,5 +1,7 @@
 #### allOf
 
+type: [ListOfMatchers](#types)
+
 ##### Desc
 Passed in validators must meet every criteria
 
@@ -13,7 +15,6 @@ const populatedStringArr = Enforce.allOf(Enforce.arrayOf(String), isPopulated)
 populatedStringArr(['']) // true
 populatedStringArr([]) // false
 populatedStringArr([10]) // false
-
 
 // contradictory types. impossible to meet criteria
 const impossibleCheck = takor.allOf(Number, String)

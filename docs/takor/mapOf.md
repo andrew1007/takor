@@ -1,5 +1,7 @@
 #### mapOf
 
+type: [ListOfTupleMatchers](#types)
+
 ##### Desc
 Asserts inner elemnts of an es6 `Map`
 ##### Notes

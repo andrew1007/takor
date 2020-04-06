@@ -1,5 +1,7 @@
 #### not.arrayOf
 
+type: [ListOfMatchers](#types)
+
 ##### Desc
 The converse [arrayOf](#arrayof)
 

@@ -1,5 +1,7 @@
 #### not.setOf
 
+type: [ListOfMatchers](#types)
+
 ##### Desc
 The converse [setOf](#setof)
 ##### Notes

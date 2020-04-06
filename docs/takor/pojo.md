@@ -1,5 +1,7 @@
 #### pojo
 
+type: [IPojo](#types)
+
 ##### Desc
 Not a validator. It is a raw function that if a value is a pojo. Use [shape](#shape) to specify a pojo shape
 

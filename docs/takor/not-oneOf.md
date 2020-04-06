@@ -1,5 +1,7 @@
 #### not.oneOf
 
+type: [ListOfMatchers](#types)
+
 ##### Desc
 The converse [oneOf](#oneof)
 ##### Notes

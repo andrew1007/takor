@@ -1,5 +1,7 @@
 #### arrayOf
 
+type: [ListOfMatchers](#types)
+
 ##### Desc
 Asserts the element is an array with specific types stated
 
