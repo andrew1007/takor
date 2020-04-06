@@ -1,4 +1,4 @@
-import takor from '../src/index'
+import takor from '../index'
 import fs from 'fs'
 // @ts-ignore
 

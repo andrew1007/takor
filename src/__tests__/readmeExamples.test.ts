@@ -116,8 +116,6 @@ describe('README examples', () => {
         const isPopulated = (arr) => arr.length > 0
         const populatedStringArr = takor.allOf(takor.arrayOf(String), isPopulated)
         const impossibleCheck = takor.allOf(Number, String)
-        console.log(impossibleCheck(10)) // false
-        console.log(impossibleCheck('')) // false
         it('it meets expected values', () => {
             expect(populatedStringArr([''])).toEqual(true)
             expect(populatedStringArr([])).toEqual(false)

@@ -1,4 +1,4 @@
-import typeMatchers from '../src/typeMatchers'
+import typeMatchers from '../typeMatchers'
 import fs from 'fs'
 
 (function () {
