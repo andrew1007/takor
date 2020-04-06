@@ -8,24 +8,25 @@ Flexible and composable runtime type assertion for Javascript. Syntax inspired b
 - custom validators
 
 ## Table of Contents
-* [Quick Examples](#📦-Quick-Examples)
-* [allOf](#allOf)
+* [Quick Examples](#📦-quick-examples)
+* [allOf](#allof)
 * [any](#any)
-* [arrayOf](#arrayOf)
+* [arrayOf](#arrayof)
 * [falsey](#falsey)
 * [is](#is)
-* [mapOf](#mapOf)
-* [not.arrayOf](#notarrayOf)
+* [mapOf](#mapof)
+* [not.arrayOf](#notarrayof)
 * [not.is](#notis)
-* [not.mapOf](#notmapOf)
-* [not.oneOf](#notoneOf)
-* [not.setOf](#notsetOf)
+* [not.mapOf](#notmapof)
+* [not.oneOf](#notoneof)
+* [not.setOf](#notsetof)
 * [not.shape](#notshape)
-* [oneOf](#oneOf)
+* [oneOf](#oneof)
 * [pojo](#pojo)
-* [setOf](#setOf)
+* [setOf](#setof)
 * [shape](#shape)
 * [truthy](#truthy)
+
 
 |static| type| description |
 |--| -- | -- |

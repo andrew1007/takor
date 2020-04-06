@@ -2,7 +2,8 @@
 (async function () {
     const TAKOR_DOCS_DIRECTORY = '../docs/takor'
     const fs = require('fs')
-    const arr = ['## Table of Contents', '* [Quick Examples](#📦-Quick-Examples)']
+    const QELink = '(#📦-Quick-Examples)'.toLowerCase()
+    const arr = ['## Table of Contents', `* [Quick Examples]${QELink}`]
     await new Promise(resolve => {
         fs.readdir(TAKOR_DOCS_DIRECTORY, (_, files) => {
             for (let file of files) {
@@ -15,7 +16,7 @@
     })
 
     const toc = arr.slice(0, 2).concat(arr.slice(2).map(el => {
-        return `* [${el}](#${el.replace(/\./g, '')})`
+        return `* [${el}](#${el.replace(/\./g, '').toLowerCase()})`
     })).join('\n')
     console.log(toc)
 })()
