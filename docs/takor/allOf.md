@@ -1,5 +1,7 @@
 #### allOf
 
+type: [ListOfMatchers](#types)
+
 ##### Desc
 Passed in validators must meet every criteria
 

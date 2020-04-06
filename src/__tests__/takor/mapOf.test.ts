@@ -112,7 +112,7 @@ describe('mapOf', () => {
     describe('non-map values', () => {
         INVALID_VALUE_TYPES.mapOf.forEach(([type, value]) => {
             it(`is false for type ${type} of value ${value}`, () => {
-                const enforcer = Enforce.mapOf([Enforce.ANY, Enforce.ANY])
+                const enforcer = Enforce.mapOf([Enforce.any, Enforce.any])
                 expect(enforcer(value)).toEqual(false)
             })
         })
@@ -121,7 +121,7 @@ describe('mapOf', () => {
     describe('robustness', () => {
         describe('assertion', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
-                const enforcer = Enforce.mapOf([Enforce.ANY, Enforce.ANY])
+                const enforcer = Enforce.mapOf([Enforce.any, Enforce.any])
                 it(`does not throw for value type ${value}`, () => {
                     expect(() => enforcer(value)).not.toThrow()
                 })

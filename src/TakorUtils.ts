@@ -1,18 +1,18 @@
 import typeMatchers from './typeMatchers'
 import { POJO, ANY, TRUTHY, FALSEY } from './constants'
-import { IValidEnforcerArgs, IValidator } from './types'
+import { IMatcher, ICustomValidator } from './types'
 
 export default class TakorUtils {
-    protected static pojo = typeMatchers.get(POJO) as IValidator
-    protected static ANY = typeMatchers.get(ANY) as IValidator
-    protected static TRUTHY = typeMatchers.get(TRUTHY) as IValidator
-    protected static FALSEY = typeMatchers.get(FALSEY) as IValidator
+    protected static pojo = typeMatchers.get(POJO) as ICustomValidator
+    protected static ANY = typeMatchers.get(ANY) as ICustomValidator
+    protected static TRUTHY = typeMatchers.get(TRUTHY) as ICustomValidator
+    protected static FALSEY = typeMatchers.get(FALSEY) as ICustomValidator
 
-    protected static getValidator(el: any): IValidator {
+    protected static getValidator(el: any): ICustomValidator {
         if (el === TakorUtils.ANY) {
             return () => true
         } if (typeMatchers.has(el)) {
-            return typeMatchers.get(el) as IValidator
+            return typeMatchers.get(el) as ICustomValidator
         } else if (typeof el === 'function') {
             return el
         } else if (typeof el === 'string' || typeof el === 'number') {
@@ -22,15 +22,15 @@ export default class TakorUtils {
         }
     }
 
-    protected static createArrayValidators = (enforcedTypes: any[]): IValidator[] => {
+    protected static createArrayValidators = (enforcedTypes: any[]): ICustomValidator[] => {
         return enforcedTypes.map(el => TakorUtils.getValidator(el))
     }
 
-    protected static createMapValidators = (enforcedTypes: [IValidEnforcerArgs, IValidEnforcerArgs][]): [IValidator, IValidator][] => {
+    protected static createMapValidators = (enforcedTypes: [IMatcher, IMatcher][]): [ICustomValidator, ICustomValidator][] => {
         return enforcedTypes.map(([key, value]) => [TakorUtils.getValidator(key), TakorUtils.getValidator(value)])
     }
 
-    protected static assertOfArray(allValidators: IValidator[]) {
+    protected static assertOfArray(allValidators: ICustomValidator[]) {
         return (array: any) => {
             try {
                 return array.every((entry: any) => {
@@ -44,7 +44,7 @@ export default class TakorUtils {
 
     protected static ensure = {
         not: {
-            every: (allValidators: IValidator[]) => (entry: any) => allValidators.every(validator => !validator(entry)),
+            every: (allValidators: ICustomValidator[]) => (entry: any) => allValidators.every(validator => !validator(entry)),
             matchShape: ({ shape, arg }): boolean => {
                 for (let key in shape) {
                     if (shape.hasOwnProperty(key)) {
@@ -59,8 +59,8 @@ export default class TakorUtils {
                 return true
             }
         },
-        every: (allValidators: IValidator[]) => (entry: any) => allValidators.every(validator => validator(entry)),
-        some: (allValidators: IValidator[]) => (entry: any) => allValidators.some(el => el(entry)),
+        every: (allValidators: ICustomValidator[]) => (entry: any) => allValidators.every(validator => validator(entry)),
+        some: (allValidators: ICustomValidator[]) => (entry: any) => allValidators.some(el => el(entry)),
         matchShape: ({ shape, arg }): boolean => {
             for (let key in shape) {
                 if (shape.hasOwnProperty(key)) {
