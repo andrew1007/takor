@@ -1,16 +1,16 @@
-import Enforce from '../..'
+import takor from '../..'
 import { INVALID_VALUE_TYPES, EVERY_POSSIBLE_VALUE } from '../testResources'
 
 describe('not.shape', () => {
     describe('basic', () => {
         it('succeeds', () => {
-            const enforcer = Enforce.not.shape({})
+            const enforcer = takor.not.shape({})
             const actual = enforcer({ a: 10 })
             expect(actual).toEqual(true)
         })
         it('fails', () => {
-            const enforcer = Enforce.not.shape({
-                key: Enforce.pojo
+            const enforcer = takor.not.shape({
+                key: takor.pojo
             })
             const actual = enforcer({ key: { a: 10 } })
             expect(actual).toEqual(false)
@@ -18,8 +18,8 @@ describe('not.shape', () => {
     })
     describe('complex', () => {
         it('checks nested elements', () => {
-            const enforcer = Enforce.shape({
-                key: Enforce.not.shape({
+            const enforcer = takor.shape({
+                key: takor.not.shape({
                     notKey: Number
                 })
             })
@@ -29,8 +29,8 @@ describe('not.shape', () => {
             expect(actual).toEqual(true)
         })
         it('asserts outer elements', () => {
-            const enforcer = Enforce.not.shape({
-                key: Enforce.shape({
+            const enforcer = takor.not.shape({
+                key: takor.shape({
                     notKey: Number
                 })
             })
@@ -46,7 +46,7 @@ describe('not.shape', () => {
         INVALID_VALUE_TYPES.shape.forEach(([type, value]) => {
             it(`is true for type ${type} of value ${value}`, () => {
                 // @ts-ignore
-                const enforcer = Enforce.not.shape(Enforce.any)
+                const enforcer = takor.not.shape(takor.any)
                 expect(enforcer(value)).toEqual(true)
             })
         })
@@ -56,7 +56,7 @@ describe('not.shape', () => {
         describe('assertion', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
                 // @ts-ignore
-                const enforcer = Enforce.not.shape(Enforce.any)
+                const enforcer = takor.not.shape(takor.any)
                 it(`does not throw for value type ${value}`, () => {
                     expect(() => { enforcer(value) }).not.toThrow()
                 })
@@ -66,7 +66,7 @@ describe('not.shape', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
                 it(`does not throw when initailized with: ${value}`, () => {
                     // @ts-ignore
-                    expect(() => { Enforce.not.shape(value) }).not.toThrow()
+                    expect(() => { takor.not.shape(value) }).not.toThrow()
                 })
             })
         })

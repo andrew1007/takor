@@ -124,4 +124,20 @@ describe('README examples', () => {
             expect(populatedStringArr([10])).toEqual(false)
         })
     })
+
+    describe('not.is', () => {
+        it('asserts', () => {
+            const checkStrLen = takor.not.is((str) => str.length === 0)
+            expect(checkStrLen('')).toEqual(false)
+            expect(checkStrLen('10')).toEqual(true)
+        })
+    })
+
+    describe('not.setOf', () => {
+        it('asserts', () => {
+            const notStrs = takor.not.setOf(String)
+            expect(notStrs(new Set([10]))).toEqual(true)
+            expect(notStrs(new Set([10, '12']))).toEqual(false)
+        })
+    })
 })

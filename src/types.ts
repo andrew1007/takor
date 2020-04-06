@@ -1,5 +1,11 @@
 // Custom validators are any function that accepts an input value and returns a boolean
-export type IValidator = (el?: any) => boolean
+export type ICustomValidator = (el?: any) => boolean
+
+// Baked in common matchers, so you don't have to constantly write them yourself
+export type IPojo = (el?: any) => boolean
+export type IAny = (el?: any) => boolean
+export type ITruthy = (el?: any) => boolean
+export type IFalsey = (el?: any) => boolean
 
 // Shape accepts an object where the value is a validator or a primitive literal
 export type ShapeArg = {
@@ -20,4 +26,4 @@ export type IValidTakorArgs =
     false |
     string |
     number |
-    IValidator // custom validator
+    ICustomValidator // custom validator

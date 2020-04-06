@@ -14,6 +14,7 @@ populatedStringArr(['']) // true
 populatedStringArr([]) // false
 populatedStringArr([10]) // false
 
+
 // contradictory types. impossible to meet criteria
 const impossibleCheck = takor.allOf(Number, String)
 impossibleCheck(10) // false

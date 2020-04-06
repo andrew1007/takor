@@ -1,4 +1,3 @@
-
 import takor from '../src/index'
 import fs from 'fs'
 // @ts-ignore
