@@ -3,11 +3,11 @@ const writeTypes = (types: string) => (`
 \`\`\`typescript
 ${types}
 \`\`\`
-`);
+`)
 
-(function () {
+export default function (path: string) {
     const fs = require('fs')
-    const text = fs.readFileSync(`../src/types.ts`, 'utf8')
+    const text = fs.readFileSync(path, 'utf8')
     const replacedExportKeyWord = text.replace(/export /g, '')
-    console.log(writeTypes(replacedExportKeyWord))
-})()
+    return writeTypes(replacedExportKeyWord)
+}

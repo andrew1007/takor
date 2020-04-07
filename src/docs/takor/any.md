@@ -3,7 +3,7 @@
 type: [IAny](#types)
 
 ##### Desc
-A function that is `true` for any value
+Not a validator. A function that is `true` for any value
 
 ##### Notes
 Intended use is as an argument for validators.

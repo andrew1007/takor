@@ -1,4 +1,4 @@
-## 📦 Quick Examples
+## Quick Examples
 ```javascript
 // takor.oneOf
 const isNumOrStr = takor.oneOf(Number, String)
