@@ -81,6 +81,7 @@ nonNullOrArray([]) // false
 ```
 ## Table of Contents
 * [Quick Examples](#quick-examples)
+* [Available Matchers](#available-matchers)
 * [allOf](#allof)
 * [any](#any)
 * [arrayOf](#arrayof)

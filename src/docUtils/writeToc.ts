@@ -8,6 +8,7 @@ export default function (path) {
         `* [Quick Examples]${QELink}`,
         `* [Available Matchers]${AvailableMatchersLink}`
     ]
+    const initialArrLength = arr.length
     const files = fs.readdirSync(path)
     for (let file of files) {
         const text = fs.readFileSync(`${path}/${file}`, 'utf8')
@@ -15,7 +16,7 @@ export default function (path) {
         arr.push(name)
     }
 
-    return arr.slice(0, 2).concat(arr.slice(2).map(el => {
+    return arr.slice(0, initialArrLength).concat(arr.slice(initialArrLength).map(el => {
         return `* [${el}](#${el.replace(/\./g, '').toLowerCase()})`
     })).join('\n').concat('\n')
 }
