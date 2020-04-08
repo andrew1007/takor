@@ -1,5 +1,5 @@
 // Custom validators are any function that accepts an input value and returns a boolean
-export type ICustomValidator = (el?: any) => boolean
+export type ICustomValidator = (el: any) => boolean
 
 // Baked in common matchers, so you don't have to constantly write them yourself
 export type IPojo = (el: any) => boolean
