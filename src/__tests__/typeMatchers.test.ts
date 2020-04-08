@@ -215,6 +215,22 @@ const ASSERTIONS = {
             good: FALSEY_VALUES,
             bad: ALL_VALUES.filter(val => !FALSEY_VALUES.includes(val)),
         },
+    },
+    function: {
+        type: Function,
+        tests: {
+            good: SAMPLE_ARGS.FUNCTIONS,
+            bad: [
+                ...SAMPLE_ARGS.SETS,
+                ...SAMPLE_ARGS.ARRAYS,
+                ...SAMPLE_ARGS.MAPS,
+                ...SAMPLE_ARGS.NUMBERS,
+                ...SAMPLE_ARGS.STRINGS,
+                ...SAMPLE_ARGS.POJOS,
+                undefined,
+                null,
+            ]
+        }
     }
 }
 

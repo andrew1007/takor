@@ -30,4 +30,5 @@ export default new Map<any, (arg: any) => boolean>([
     [false, (el: any) => el === false],
     [truthy, (el: any) => !!el],
     [falsey, (el: any) => !el],
+    [Function, (el: any) => typeof el === 'function']
 ])
