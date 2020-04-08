@@ -103,7 +103,7 @@ nonNullOrArray([]) // false
   * [not.shape](#notshape)
 * [types](#types)
 
-|static method | type| description |
+|static method| type| description |
 |--| -- | -- |
 |[allOf](#allof)| [ListOfMatchers](#types) | Passed in validators must meet every criteria |
 |[arrayOf](#arrayof)| [ListOfMatchers](#types) | Asserts the element is an array with specific types stated |
@@ -170,7 +170,7 @@ type: [IFalsey](#types)
 Not a validator. It is a raw function that checks for any `falsey` value type
 
 ##### Notes
-More information on `falsey` can be found on [MDN](#https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
+More information on `falsey` can be found on [MDN](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
 Intended use is as an argument for validators.
 
 ##### Examples
@@ -225,7 +225,7 @@ type: [ITruthy](#types)
 ##### Desc
 Not a validator. It is a function that checks if the value is `truthy`.
 ##### Notes
-More information on `truthy` can be found on [MDN](#https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
+More information on `truthy` can be found on [MDN](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
 Intended use is as an argument for validators.
 ##### Examples
 ```javascript
@@ -570,7 +570,7 @@ assertApiPayload({ // true
 #### types
 ```typescript
 // Custom validators are any function that accepts an input value and returns a boolean
-type ICustomValidator = (el?: any) => boolean
+type ICustomValidator = (el: any) => boolean
 
 // Baked in common matchers, so you don't have to constantly write them yourself
 type IPojo = (el: any) => boolean
