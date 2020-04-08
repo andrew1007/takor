@@ -103,7 +103,7 @@ nonNullOrArray([]) // false
   * [not.shape](#notshape)
 * [types](#types)
 
-|static methods| type| description |
+|static method | type| description |
 |--| -- | -- |
 |[allOf](#allof)| [ListOfMatchers](#types) | Passed in validators must meet every criteria |
 |[arrayOf](#arrayof)| [ListOfMatchers](#types) | Asserts the element is an array with specific types stated |

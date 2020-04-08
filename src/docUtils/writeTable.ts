@@ -1,7 +1,7 @@
 import fs from 'fs'
 
 export default function (path: string) {
-    let tableHeader = '|static methods| type| description |'
+    let tableHeader = '|static method| type| description |'
     let tableSeparator = '|--| -- | -- |'
     const takorNames: string[] = []
     const converseNames: string[] = []

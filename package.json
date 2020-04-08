@@ -1,6 +1,6 @@
 {
   "name": "takor",
-  "version": "0.9.9",
+  "version": "1.0.0",
   "description": "Comprehensive and flexible runtime type assertion",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
