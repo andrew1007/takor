@@ -82,83 +82,42 @@ nonNullOrArray([]) // false
 ## Table of Contents
 * [Quick Examples](#quick-examples)
 * [Available Matchers](#available-matchers)
-* [allOf](#allof)
-* [any](#any)
-* [arrayOf](#arrayof)
-* [falsey](#falsey)
-* [is](#is)
-* [mapOf](#mapof)
-* [not.arrayOf](#notarrayof)
-* [not.is](#notis)
-* [not.mapOf](#notmapof)
-* [not.oneOf](#notoneof)
-* [not.setOf](#notsetof)
-* [not.shape](#notshape)
-* [oneOf](#oneof)
-* [pojo](#pojo)
-* [setOf](#setof)
-* [shape](#shape)
-* [truthy](#truthy)
+  * [any](#any)
+  * [falsey](#falsey)
+  * [pojo](#pojo)
+  * [truthy](#truthy)
+* Validators
+  * [allOf](#allof)
+  * [arrayOf](#arrayof)
+  * [is](#is)
+  * [mapOf](#mapof)
+  * [oneOf](#oneof)
+  * [setOf](#setof)
+  * [shape](#shape)
+* Inverse Validators
+  * [not.arrayOf](#notarrayof)
+  * [not.is](#notis)
+  * [not.mapOf](#notmapof)
+  * [not.oneOf](#notoneof)
+  * [not.setOf](#notsetof)
+  * [not.shape](#notshape)
+* [types](#types)
 
-|static| type| description |
+|static methods| type| description |
 |--| -- | -- |
-|allOf| [ListOfMatchers](#types) | Passed in validators must meet every criteria |
-|any| [IAny](#types) | Not a validator. A function that is `true` for any value |
-|arrayOf| [ListOfMatchers](#types) | Asserts the element is an array with specific types stated |
-|falsey| [IFalsey](#types) | Not a validator. It is a raw function that checks for any `falsey` value type |
-|is| [SingleMatcher](#types) | Performs an assertion on a single value |
-|mapOf| [ListOfTupleMatchers](#types) | Asserts inner elemnts of an es6 `Map` |
-|oneOf| [ListOfMatchers](#types) | At least one validator must match |
-|pojo| [IPojo](#types) | Not a validator. It is a raw function that if a value is a pojo. Use [shape](#shape) to specify a pojo shape |
-|setOf| [ListOfMatchers](#types) | Asserts inner elements of a `Set` |
-|shape| [ShapeOfMatchers](#types) | Asserts a specific structure of a pojo (plain old javascript object) |
-|truthy| [ITruthy](#types) | Not a validator. It is a function that checks if the value is `truthy`. |
-|not.arrayOf<nohttp>| [ListOfMatchers](#types) | The converse [arrayOf](#arrayof) |
-|not.is<nohttp>| [SingleMatcher](#types) | The converse [is](#is) |
-|not.mapOf<nohttp>| [ListOfTupleMatchers](#types) | The converse [mapOf](#mapof) |
-|not.oneOf<nohttp>| [ListOfMatchers](#types) | The converse [oneOf](#oneof) |
-|not.setOf<nohttp>| [ListOfMatchers](#types) | The converse [setOf](#setof) |
-|not.shape<nohttp>| [ShapeOfMatchers](#types) | The converse [shape](#shape) |
-#### Available Matchers
-
-##### Description 
-Out-of-the-box type validators. See examples for usage.
-- `Number` (Constructor)
-- `String` (Constructor)
-- `Set` (Constructor)
-- `Map` (Constructor)
-- `null`
-- `undefined`
-- `NaN`
-- `Array` (Constructor)
-- `Boolean` (Constructor)
-- `true`
-- `false`
-#### allOf
-
-type: [ListOfMatchers](#types)
-
-##### Desc
-Passed in validators must meet every criteria
-
-##### Notes
-- Contradictory validators will result in `false`
-
-##### Examples
-```javascript
-const isPopulated = (arr) => arr.length > 0
-const populatedStringArr = Enforce.allOf(Enforce.arrayOf(String), isPopulated)
-populatedStringArr(['']) // true
-populatedStringArr([]) // false
-populatedStringArr([10]) // false
-
-// contradictory types. impossible to meet criteria
-const impossibleCheck = takor.allOf(Number, String)
-impossibleCheck(10) // false
-impossibleCheck('') // false
-```
-
-
+|[allOf](#allof)| [ListOfMatchers](#types) | Passed in validators must meet every criteria |
+|[arrayOf](#arrayof)| [ListOfMatchers](#types) | Asserts the element is an array with specific types stated |
+|[is](#is)| [SingleMatcher](#types) | Performs an assertion on a single value |
+|[mapOf](#mapof)| [ListOfTupleMatchers](#types) | Asserts inner elemnts of an es6 `Map` |
+|[oneOf](#oneof)| [ListOfMatchers](#types) | At least one validator must match |
+|[setOf](#setof)| [ListOfMatchers](#types) | Asserts inner elements of a `Set` |
+|[shape](#shape)| [ShapeOfMatchers](#types) | Asserts a specific structure of a pojo (plain old javascript object) |
+|[not.arrayOf<nohttp>]() | [ListOfMatchers](#types) | The converse [arrayOf](#arrayof) |
+|[not.is<nohttp>]() | [SingleMatcher](#types) | The converse [is](#is) |
+|[not.mapOf<nohttp>]() | [ListOfTupleMatchers](#types) | The converse [mapOf](#mapof) |
+|[not.oneOf<nohttp>]() | [ListOfMatchers](#types) | The converse [oneOf](#oneof) |
+|[not.setOf<nohttp>]() | [ListOfMatchers](#types) | The converse [setOf](#setof) |
+|[not.shape<nohttp>]() | [ShapeOfMatchers](#types) | The converse [shape](#shape) |
 #### any
 
 type: [IAny](#types)
@@ -185,6 +144,96 @@ assertKeysOnly({ // true
     }
 })
 ```
+
+#### falsey
+
+type: [IFalsey](#types)
+
+##### Desc
+Not a validator. It is a raw function that checks for any `falsey` value type
+
+##### Notes
+More information on `falsey` can be found on [MDN](#https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
+Intended use is as an argument for validators.
+
+##### Examples
+```javascript
+takor.falsey(false) // true
+
+takor.falsey([]) // false
+```
+
+#### pojo
+
+type: [IPojo](#types)
+
+##### Desc
+Not a validator. It is a raw function that if a value is a pojo. Use [shape](#shape) to specify a pojo shape
+
+##### Notes
+Intended use is as an argument for validators
+
+##### Examples
+```javascript
+takor.pojo({}) // true
+takor.pojo(10) // false
+```
+
+
+#### truthy
+
+type: [ITruthy](#types)
+
+##### Desc
+Not a validator. It is a function that checks if the value is `truthy`.
+##### Notes
+More information on `truthy` can be found on [MDN](#https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
+Intended use is as an argument for validators.
+##### Examples
+```javascript
+takor.truthy(10) // true
+takor.truthy(NaN) // false
+```
+#### Available Matchers
+
+##### Description 
+Out-of-the-box type validators. See examples for usage.
+- `Number` (Constructor)
+- `String` (Constructor)
+- `Set` (Constructor)
+- `Map` (Constructor)
+- `null`
+- `undefined`
+- `NaN`
+- `Array` (Constructor)
+- `Boolean` (Constructor)
+- `true`
+- `false`
+
+#### allOf
+
+type: [ListOfMatchers](#types)
+
+##### Desc
+Passed in validators must meet every criteria
+
+##### Notes
+- Contradictory validators will result in `false`
+
+##### Examples
+```javascript
+const isPopulated = (arr) => arr.length > 0
+const populatedStringArr = Enforce.allOf(Enforce.arrayOf(String), isPopulated)
+populatedStringArr(['']) // true
+populatedStringArr([]) // false
+populatedStringArr([10]) // false
+
+// contradictory types. impossible to meet criteria
+const impossibleCheck = takor.allOf(Number, String)
+impossibleCheck(10) // false
+impossibleCheck('') // false
+```
+
 
 #### arrayOf
 
@@ -222,24 +271,6 @@ goodShapeNumOrStr([10, { hi: 10 }, new Map]) // false
 const emptyArr = takor.arrayOf()
 emptyArr([]) // true
 emptyArr([1]) // false
-```
-
-#### falsey
-
-type: [IFalsey](#types)
-
-##### Desc
-Not a validator. It is a raw function that checks for any `falsey` value type
-
-##### Notes
-More information on `falsey` can be found on [MDN](#https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
-Intended use is as an argument for validators.
-
-##### Examples
-```javascript
-takor.falsey(false) // true
-
-takor.falsey([]) // false
 ```
 
 #### is
@@ -436,23 +467,6 @@ dogOrCat('bird') // false
 ```
 
 
-#### pojo
-
-type: [IPojo](#types)
-
-##### Desc
-Not a validator. It is a raw function that if a value is a pojo. Use [shape](#shape) to specify a pojo shape
-
-##### Notes
-Intended use is as an argument for validators
-
-##### Examples
-```javascript
-takor.pojo({}) // true
-takor.pojo(10) // false
-```
-
-
 #### setOf
 
 type: [ListOfMatchers](#types)
@@ -526,21 +540,6 @@ assertApiPayload({ // true
 })
 ```
 
-
-#### truthy
-
-type: [ITruthy](#types)
-
-##### Desc
-Not a validator. It is a function that checks if the value is `truthy`.
-##### Notes
-More information on `truthy` can be found on [MDN](#https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
-Intended use is as an argument for validators.
-##### Examples
-```javascript
-takor.truthy(10) // true
-takor.truthy(NaN) // false
-```
 
 #### types
 ```typescript

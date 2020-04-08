@@ -10,17 +10,20 @@
     const TYPES_FILE_PATH = `./src/types.ts`
     const DOCS_FILE_PATH = './src/docs/takor'
     const INTRO_FILE_PATH = './src/docs/intro'
+    const MATCHER_FILE_PATH = './src/docs/funcMatcher'
 
-    const toc = writeToc(DOCS_FILE_PATH)
+    const toc = writeToc(DOCS_FILE_PATH, MATCHER_FILE_PATH)
     const table = writeTable(DOCS_FILE_PATH)
     const docCollection = createDocCollection(DOCS_FILE_PATH)
     const introCollection = createDocCollection(INTRO_FILE_PATH)
+    const matcherCollection  = createDocCollection(MATCHER_FILE_PATH)
     const types = writeTypes(TYPES_FILE_PATH)
     const availableMatchers = writeAvailableMatchers()
     const combined = [
         introCollection,
         toc,
         table,
+        matcherCollection,
         availableMatchers,
         docCollection,
         types,

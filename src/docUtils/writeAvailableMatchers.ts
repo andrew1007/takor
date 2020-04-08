@@ -7,13 +7,15 @@ Out-of-the-box type validators. See examples for usage.
 - \`String\` (Constructor)
 - \`Set\` (Constructor)
 - \`Map\` (Constructor)
+- \`Boolean\` (Constructor)
+- \`Array\` (Constructor)
+- \`Function\` (Constructor)
 - \`null\`
 - \`undefined\`
 - \`NaN\`
-- \`Array\` (Constructor)
-- \`Boolean\` (Constructor)
 - \`true\`
-- \`false\``
+- \`false\`
+`
 
 return el
 }

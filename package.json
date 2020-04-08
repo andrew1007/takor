@@ -1,6 +1,6 @@
 {
   "name": "takor",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "description": "Comprehensive and flexible runtime type assertion",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/andrew1007/type-enforce"
+    "url": "https://github.com/andrew1007/takor"
   },
   "keywords": [
     "type-enforce",
@@ -24,14 +24,15 @@
     "npm",
     "package",
     "type",
-    "validation"
+    "validation",
+    "takor"
   ],
   "author": "Andrew Yueh <yueh.andrew@gmail.com> (http://andrewyueh.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/andrew1007/type-enforce/issues"
+    "url": "https://github.com/andrew1007/takor/issues"
   },
-  "homepage": "https://github.com/andrew1007/type-enforce",
+  "homepage": "https://github.com/andrew1007/takor",
   "devDependencies": {
     "@types/jest": "^25.1.3",
     "@types/node": "^12.7.3",

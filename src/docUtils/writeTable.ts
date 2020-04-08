@@ -1,7 +1,7 @@
 import fs from 'fs'
 
 export default function (path: string) {
-    let tableHeader = '|static| type| description |'
+    let tableHeader = '|static methods| type| description |'
     let tableSeparator = '|--| -- | -- |'
     const takorNames: string[] = []
     const converseNames: string[] = []
@@ -26,11 +26,16 @@ export default function (path: string) {
         }
     }
 
+    const makeNamedLink = (name: string) => `[${name}](#${name.replace(/\./g, '').toLowerCase()})`
+    const makeConverseNamedLink = (name: string) => {
+        return `[${name}<nohttp>](${name.replace(/./g, '').replace(/\./g, '').toLowerCase()})`
+    }
+
     const rows = takorNames.map((name, idx) => {
-        return `|${name}| ${type[idx]} | ${description[idx]} |`.replace(/\r/g, '')
+        return `|${makeNamedLink(name)}| ${type[idx]} | ${description[idx]} |`.replace(/\r/g, '')
     })
     const converseRows = converseNames.map((name, idx) => {
-        return `|${name}<nohttp>| ${converseType[idx]} | ${converseDescription[idx]} |`.replace(/\r/g, '')
+        return `|${makeConverseNamedLink(name)} | ${converseType[idx]} | ${converseDescription[idx]} |`.replace(/\r/g, '')
     })
 
     return [

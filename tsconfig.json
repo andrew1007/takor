@@ -35,5 +35,8 @@
     "config",
     "src/__tests__",
     "dist",
+    "src/docs",
+    "src/docUtils",
+    "src/utils"
   ]
 }
