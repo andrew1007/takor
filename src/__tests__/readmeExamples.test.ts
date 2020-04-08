@@ -137,4 +137,40 @@ describe('README examples', () => {
             expect(notStrs(new Set([10, '12']))).toEqual(false)
         })
     })
+
+    describe('falsey', () => {
+        it('works', () => {
+            const falseyOnly = takor.arrayOf(takor.falsey)
+            expect(falseyOnly([1, null, ''])).toEqual(false)
+            expect(falseyOnly([null, 0, ''])).toEqual(true)
+        })
+    })
+
+    describe('truthy', () => {
+        it('works', () => {
+            const truthiesOnly = takor.arrayOf(takor.truthy)
+            expect(truthiesOnly([1, new Set, ''])).toEqual(false)
+            expect(truthiesOnly([1, new Set, '1'])).toEqual(true)
+        })
+    })
+
+    describe('pojo', () => {
+        it('works', () => {
+            const isPayload = takor.shape({
+                data: takor.oneOf(takor.pojo, Array)
+            })
+            
+            expect(isPayload({ // false
+                result: {}
+            })).toEqual(false)
+            
+            expect(isPayload({ // true
+                data: {}
+            })).toEqual(true)
+            
+            expect(isPayload({ // true
+                data: []
+            })).toEqual(true)
+        })
+    })
 })

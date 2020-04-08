@@ -12,4 +12,22 @@ Intended use is as an argument for validators
 ```javascript
 takor.pojo({}) // true
 takor.pojo(10) // false
+
+// any object or array as long as top level key is `data`
+const isPayload = takor.shape({
+    data: takor.oneOf(takor.pojo, Array)
+})
+
+isPayload({ // false
+    result: {}
+})
+
+isPayload({ // true
+    data: {}
+})
+
+isPayload({ // true
+    data: []
+})
+
 ```

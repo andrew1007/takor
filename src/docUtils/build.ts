@@ -23,8 +23,8 @@
         introCollection,
         toc,
         table,
-        matcherCollection,
         availableMatchers,
+        matcherCollection,
         docCollection,
         types,
     ].join('\n')

@@ -118,6 +118,23 @@ nonNullOrArray([]) // false
 |[not.oneOf<nohttp>]() | [ListOfMatchers](#types) | The converse [oneOf](#oneof) |
 |[not.setOf<nohttp>]() | [ListOfMatchers](#types) | The converse [setOf](#setof) |
 |[not.shape<nohttp>]() | [ShapeOfMatchers](#types) | The converse [shape](#shape) |
+#### Available Matchers
+
+##### Description 
+Out-of-the-box type validators. See examples for usage.
+- `Number` (Constructor)
+- `String` (Constructor)
+- `Set` (Constructor)
+- `Map` (Constructor)
+- `Boolean` (Constructor)
+- `Array` (Constructor)
+- `Function` (Constructor)
+- `null`
+- `undefined`
+- `NaN`
+- `true`
+- `false`
+
 #### any
 
 type: [IAny](#types)
@@ -159,8 +176,11 @@ Intended use is as an argument for validators.
 ##### Examples
 ```javascript
 takor.falsey(false) // true
-
 takor.falsey([]) // false
+
+const falseyOnly = takor.arrayOf(takor.falsey)
+falseyOnly([1, null, '']) //  false
+falseyOnly([null, 0, '']) //  true
 ```
 
 #### pojo
@@ -177,6 +197,24 @@ Intended use is as an argument for validators
 ```javascript
 takor.pojo({}) // true
 takor.pojo(10) // false
+
+// any object or array as long as top level key is `data`
+const isPayload = takor.shape({
+    data: takor.oneOf(takor.pojo, Array)
+})
+
+isPayload({ // false
+    result: {}
+})
+
+isPayload({ // true
+    data: {}
+})
+
+isPayload({ // true
+    data: []
+})
+
 ```
 
 
@@ -193,23 +231,11 @@ Intended use is as an argument for validators.
 ```javascript
 takor.truthy(10) // true
 takor.truthy(NaN) // false
+
+const truthiesOnly = takor.arrayOf(takor.truthy)
+truthiesOnly([1, new Set, '1']) //  true
+truthiesOnly([1, new Set, '']) //  false
 ```
-#### Available Matchers
-
-##### Description 
-Out-of-the-box type validators. See examples for usage.
-- `Number` (Constructor)
-- `String` (Constructor)
-- `Set` (Constructor)
-- `Map` (Constructor)
-- `null`
-- `undefined`
-- `NaN`
-- `Array` (Constructor)
-- `Boolean` (Constructor)
-- `true`
-- `false`
-
 #### allOf
 
 type: [ListOfMatchers](#types)

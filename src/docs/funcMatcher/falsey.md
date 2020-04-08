@@ -12,6 +12,9 @@ Intended use is as an argument for validators.
 ##### Examples
 ```javascript
 takor.falsey(false) // true
-
 takor.falsey([]) // false
+
+const falseyOnly = takor.arrayOf(takor.falsey)
+falseyOnly([1, null, '']) //  false
+falseyOnly([null, 0, '']) //  true
 ```

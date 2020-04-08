@@ -11,4 +11,8 @@ Intended use is as an argument for validators.
 ```javascript
 takor.truthy(10) // true
 takor.truthy(NaN) // false
+
+const truthiesOnly = takor.arrayOf(takor.truthy)
+truthiesOnly([1, new Set, '1']) //  true
+truthiesOnly([1, new Set, '']) //  false
 ```
