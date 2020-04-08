@@ -17,7 +17,7 @@ const docTemplateWriter = (staticName: string) => {
 \`\`\``
 }
 
-(function () {
+export default function () {
     const takorDir = './src/docs/takor'
     const takorNotDir = `./src/docs/takor`
     const takorMatcherDir = `./src/docs/funcMatcher`
@@ -67,6 +67,8 @@ const docTemplateWriter = (staticName: string) => {
         }
     }
     if (fileCreationCount === 0) {
-        console.log('all files already exist')
+        console.log('all doc files already exist')
     }
-})()
+
+    return fileCreationCount
+}

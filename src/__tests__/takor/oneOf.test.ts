@@ -14,7 +14,7 @@ describe('oneOf', () => {
         const enforcer = takor.oneOf(Set, Number)
         expect(enforcer('new Set')).toEqual(false)
     })
-    describe('with Enforce.shape', () => {
+    describe('with takor.shape', () => {
         it('is used when is in shape', () => {
             const enforcer = takor.shape({
                 key: takor.oneOf(String, Number)
@@ -25,7 +25,7 @@ describe('oneOf', () => {
             expect(actual).toEqual(true)
         })
     })
-    describe('with Enforce.arrayOf', () => {
+    describe('with takor.arrayOf', () => {
         it('finds inside arrayOf', () => {
             const enforcer = takor.arrayOf(takor.oneOf(String, Number))
             expect(enforcer([''])).toEqual(true)

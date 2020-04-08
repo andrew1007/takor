@@ -1,7 +1,7 @@
 import takor from '..'
 
 describe('README examples', () => {
-    describe('Enforce.oneOf', () => {
+    describe('takor.oneOf', () => {
         const isNumOrStr = takor.oneOf(Number, String)
         it('matching value', () => {
             expect(isNumOrStr(10)).toEqual(true)
@@ -11,7 +11,7 @@ describe('README examples', () => {
         })
     })
 
-    describe('Enforce.shape', () => {
+    describe('takor.shape', () => {
         const checkShape = takor.shape({
             key1: takor.oneOf(Number, String)
         })

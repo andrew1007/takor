@@ -1,20 +1,20 @@
-import Enforce from '../..'
+import takor from '../..'
 import { EVERY_POSSIBLE_VALUE } from '../testResources'
 
 describe('is', () => {
     describe('basic', () => {
         it('validates a single entry', () => {
-            const enforcer = Enforce.is(String)
+            const enforcer = takor.is(String)
             expect(enforcer('')).toEqual(true)
         })
         it('correctly fails validation', () => {
-            const enforcer = Enforce.is(Number)
+            const enforcer = takor.is(Number)
             expect(enforcer('')).toEqual(false)
         })
     })
     describe('shape', () => {
         it('validates a single entry', () => {
-            const enforcer = Enforce.is(Enforce.shape({
+            const enforcer = takor.is(takor.shape({
                 key: Number
             }))
             expect(enforcer({
@@ -22,7 +22,7 @@ describe('is', () => {
             })).toEqual(true)
         })
         it('correctly fails validation', () => {
-            const enforcer = Enforce.is(Enforce.shape({
+            const enforcer = takor.is(takor.shape({
                 key: Set
             }))
             expect(enforcer({
@@ -32,11 +32,11 @@ describe('is', () => {
     })
     describe('custom validator', () => {
         it('validates a single entry', () => {
-            const enforcer = Enforce.is((el: any) => el > 0)
+            const enforcer = takor.is((el: any) => el > 0)
             expect(enforcer(190)).toEqual(true)
         })
         it('correctly fails validation', () => {
-            const enforcer = Enforce.is((el: any) => el > 0)
+            const enforcer = takor.is((el: any) => el > 0)
             expect(enforcer(-1)).toEqual(false)
         })
     })
@@ -53,7 +53,7 @@ describe('is', () => {
             { value: { a: 10 }, good: true },
         ]
         VALUES.forEach(({ value, good }) => {
-            const isPojo = Enforce.is(Enforce.pojo)
+            const isPojo = takor.is(takor.pojo)
             it(`is for ${value} of value ${good}`, () => {
                 expect(isPojo(value)).toEqual(good)
             })
@@ -62,7 +62,7 @@ describe('is', () => {
     describe('robustness', () => {
         describe('assertion', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
-                const enforcer = Enforce.is(Enforce.any)
+                const enforcer = takor.is(takor.any)
                 it(`does not throw for value type ${value}`, () => {
                     expect(() => enforcer(value)).not.toThrow()
                 })
@@ -72,7 +72,7 @@ describe('is', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
                 it(`does not throw when initailized with: ${value}`, () => {
                     // @ts-ignore
-                    expect(() => { Enforce.is(value) }).not.toThrow()
+                    expect(() => { takor.is(value) }).not.toThrow()
                 })
             })
         })

@@ -1,5 +1,5 @@
 
-(function () {
+export default function () {
     const writeToc = require('./writeToc.ts').default
     const writeTable = require('./writeTable').default
     const createDocCollection = require('./createDocCollection').default
@@ -30,4 +30,4 @@
     ].join('\n')
 
     fs.writeFileSync(`./README.md`, combined)
-})()
+}

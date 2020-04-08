@@ -1,9 +1,9 @@
-import Enforce from '../..'
+import takor from '../..'
 import { INVALID_VALUE_TYPES, EVERY_POSSIBLE_VALUE } from '../testResources'
 
 describe('mapOf', () => {
     it('asserts internal elements of set', () => {
-        const enforcer = Enforce.mapOf(
+        const enforcer = takor.mapOf(
             [Number, Number]
         )
         expect(enforcer(new Map([
@@ -11,7 +11,7 @@ describe('mapOf', () => {
         ]))).toEqual(true)
     })
     it('asserts failure of elements', () => {
-        const enforcer = Enforce.mapOf(
+        const enforcer = takor.mapOf(
             [String, Number]
         )
         expect(enforcer(new Map([
@@ -19,7 +19,7 @@ describe('mapOf', () => {
         ]))).toEqual(false)
     })
     it('asserts failure of elements', () => {
-        const enforcer = Enforce.mapOf(
+        const enforcer = takor.mapOf(
             [String, Number]
         )
         expect(enforcer(new Map([
@@ -27,7 +27,7 @@ describe('mapOf', () => {
         ]))).toEqual(false)
     })
     it('asserts failure of elements', () => {
-        const enforcer = Enforce.mapOf(
+        const enforcer = takor.mapOf(
             [String, 'Number']
         )
         expect(enforcer(new Map([
@@ -35,7 +35,7 @@ describe('mapOf', () => {
         ]))).toEqual(true)
     })
     it('asserts multitypes', () => {
-        const enforcer = Enforce.mapOf(
+        const enforcer = takor.mapOf(
             [String, Number],
             [Number, String]
         )
@@ -46,7 +46,7 @@ describe('mapOf', () => {
         ]))).toEqual(true)
     })
     it('asserts multitypes that are partial matches', () => {
-        const enforcer = Enforce.mapOf(
+        const enforcer = takor.mapOf(
             [String, Number],
             [Number, String],
             [Number, Set]
@@ -58,7 +58,7 @@ describe('mapOf', () => {
         ]))).toEqual(true)
     })
     it('asserts multitypes correctly when one value does not match', () => {
-        const enforcer = Enforce.mapOf(
+        const enforcer = takor.mapOf(
             [String, Number],
             [Number, String]
         )
@@ -69,7 +69,7 @@ describe('mapOf', () => {
         ]))).toEqual(false)
     })
     it('asserts multitypes correctly when one key does not match', () => {
-        const enforcer = Enforce.mapOf(
+        const enforcer = takor.mapOf(
             [String, Number],
             [Number, String],
             [String, Map]
@@ -81,12 +81,12 @@ describe('mapOf', () => {
         ]))).toEqual(false)
     })
     it('asserts multitypes and allows enforcer functions as sub checkers', () => {
-        const assertShape = Enforce.shape({
-            key: Enforce.shape({
-                key2: Enforce.oneOf(null, Number)
+        const assertShape = takor.shape({
+            key: takor.shape({
+                key2: takor.oneOf(null, Number)
             })
         })
-        const enforcer = Enforce.mapOf(
+        const enforcer = takor.mapOf(
             [String, Number],
             [Number, String],
             [String, assertShape]
@@ -98,11 +98,11 @@ describe('mapOf', () => {
         ]))).toEqual(true)
     })
     it('asserts empty map', () => {
-        const enforcer = Enforce.mapOf()
+        const enforcer = takor.mapOf()
         expect(enforcer(new Map)).toEqual(true)
     })
     it('asserts populated map when expected to be empty', () => {
-        const enforcer = Enforce.mapOf()
+        const enforcer = takor.mapOf()
         expect(enforcer(new Map<any, any>([
             ['10', 10],
             ['12', { key: { key2: null } }],
@@ -112,7 +112,7 @@ describe('mapOf', () => {
     describe('non-map values', () => {
         INVALID_VALUE_TYPES.mapOf.forEach(([type, value]) => {
             it(`is false for type ${type} of value ${value}`, () => {
-                const enforcer = Enforce.mapOf([Enforce.any, Enforce.any])
+                const enforcer = takor.mapOf([takor.any, takor.any])
                 expect(enforcer(value)).toEqual(false)
             })
         })
@@ -121,7 +121,7 @@ describe('mapOf', () => {
     describe('robustness', () => {
         describe('assertion', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
-                const enforcer = Enforce.mapOf([Enforce.any, Enforce.any])
+                const enforcer = takor.mapOf([takor.any, takor.any])
                 it(`does not throw for value type ${value}`, () => {
                     expect(() => enforcer(value)).not.toThrow()
                 })
@@ -131,7 +131,7 @@ describe('mapOf', () => {
             EVERY_POSSIBLE_VALUE.forEach(value => {
                 it(`does not throw when initailized with: ${value}`, () => {
                     // @ts-ignore
-                    expect(() => { Enforce.mapOf(value) }).not.toThrow()
+                    expect(() => { takor.mapOf(value) }).not.toThrow()
                 })
             })
         })

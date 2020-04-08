@@ -249,7 +249,7 @@ Passed in validators must meet every criteria
 ##### Examples
 ```javascript
 const isPopulated = (arr) => arr.length > 0
-const populatedStringArr = Enforce.allOf(Enforce.arrayOf(String), isPopulated)
+const populatedStringArr = takor.allOf(takor.arrayOf(String), isPopulated)
 populatedStringArr(['']) // true
 populatedStringArr([]) // false
 populatedStringArr([10]) // false
@@ -504,10 +504,10 @@ Asserts inner elements of a `Set`
 
 ##### Examples
 ```javascript
-const allNums = Enforce.setOf(Number)
+const allNums = takor.setOf(Number)
 setOfNums(new Set([10, 30, 40])) // true
 
-const strOrNums = Enforce.setOf(String, Number)
+const strOrNums = takor.setOf(String, Number)
 strOrNums(new Set([10, '12'])) // true
 strOrNums(new Set([10, '12', new Map])) // false
 ```

@@ -14,7 +14,7 @@ describe('takor.${staticName}', () => {
 `
 }
 
-(function () {
+export default function () {
     const testsDir = './src/__tests__/takor'
     const testsNotDir = `./src/__tests__/takor.not`
     const takorMatcherDir = `./src/__tests__/matchers`
@@ -66,6 +66,7 @@ describe('takor.${staticName}', () => {
     }
 
     if (fileCreationCount === 0) {
-        console.log('all files already exist')
+        console.log('all test files already exist')
     }
-})()
+    return fileCreationCount
+}

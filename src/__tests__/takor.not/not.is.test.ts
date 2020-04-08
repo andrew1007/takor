@@ -1,27 +1,27 @@
-import Enforce from '../..'
+import takor from '../..'
 
 describe('not.is', () => {
     describe('base matchers', () => {
         it('matches not', () => {
-            const enforcer = Enforce.not.is(undefined)
+            const enforcer = takor.not.is(undefined)
             expect(enforcer(10)).toEqual(true)
         })
         it('inverse matches', () => {
-            const enforcer = Enforce.not.is(undefined)
+            const enforcer = takor.not.is(undefined)
             expect(enforcer(undefined)).toEqual(false)
         })
     })
     describe('compound matchers', () => {
         it('matches not', () => {
-            const enforcer = Enforce.not.is(Enforce.arrayOf(Number))
+            const enforcer = takor.not.is(takor.arrayOf(Number))
             expect(enforcer(['10', null, undefined, NaN, [], new Set, new Map])).toEqual(true)
         })
         it('inverse matches', () => {
-            const enforcer = Enforce.not.is(Enforce.arrayOf(Number))
+            const enforcer = takor.not.is(takor.arrayOf(Number))
             expect(enforcer(['10'])).toEqual(true)
         })
         it('inverse matches specific types', () => {
-            const enforcer = Enforce.not.is(Enforce.arrayOf(10))
+            const enforcer = takor.not.is(takor.arrayOf(10))
             expect(enforcer([10])).toEqual(false)
         })
     })

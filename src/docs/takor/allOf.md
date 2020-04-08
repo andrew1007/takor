@@ -11,7 +11,7 @@ Passed in validators must meet every criteria
 ##### Examples
 ```javascript
 const isPopulated = (arr) => arr.length > 0
-const populatedStringArr = Enforce.allOf(Enforce.arrayOf(String), isPopulated)
+const populatedStringArr = takor.allOf(takor.arrayOf(String), isPopulated)
 populatedStringArr(['']) // true
 populatedStringArr([]) // false
 populatedStringArr([10]) // false
