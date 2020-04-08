@@ -70,4 +70,24 @@ validMap(new Map([ // false
 const nonNullOrArray = takor.not.oneOf(null, Array)
 nonNullOrArray(10) // true
 nonNullOrArray([]) // false
+
+
+/**
+ * Practical example:
+ * Checks if the api response has a data key that is an array of objects
+ * that have the keys id, phoneNumber, and name, where
+ * the phone number is also checked if it is a valid phone number
+ */
+const isValidPhoneNumber = (phoneNumber) => {
+    return /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(phoneNumber)
+}
+const isExpectedApiResponse = takor.shape({
+    status: Number,
+    message: String,
+    data: takor.arrayOf(takor.shape({
+        id: Number,
+        phoneNumber: isValidPhoneNumber,
+        name: String,
+    })),
+})
 ```
