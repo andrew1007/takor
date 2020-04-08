@@ -17,7 +17,6 @@ const checkInnerOobj = takor.arrayOf(
     takor.shape({
         hi: Number
     }),
-    Number,
 )
 checkInnerOobj([{ hi: 10 }]) // true
 
