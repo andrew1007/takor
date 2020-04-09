@@ -97,7 +97,7 @@ export default class takor extends TakorUtils {
         try {
             allValidators = TakorUtils.createMapValidators(enforcedTypes)
         } catch {
-            return () => true
+            return () => false;
         }
 
         return (map: any) => {
